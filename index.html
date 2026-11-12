@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es-AR" data-tema="oscuro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valentino Costanzo · Diseño y desarrollo web</title>
+  <meta name="description" content="Soy Valentino Costanzo. Diseño y desarrollo webs, tiendas online y sistemas a medida para marcas. Mirá mis proyectos y escribime por WhatsApp.">
+  <link rel="canonical" href="https://valentino-costanzo.costanzovalentino09.workers.dev/">
+  <meta name="theme-color" content="#0d0e0c">
+  <meta name="color-scheme" content="dark light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Valentino Costanzo">
+  <meta property="og:title" content="Valentino Costanzo · Diseño y desarrollo web">
+  <meta property="og:description" content="Diseño y desarrollo webs, tiendas online y sistemas a medida para marcas.">
+  <meta property="og:url" content="https://valentino-costanzo.costanzovalentino09.workers.dev/">
+  <meta property="og:image" content="https://valentino-costanzo.costanzovalentino09.workers.dev/img/compartir.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preload" href="fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    // Tema guardado (oscuro por defecto) y aviso de que hay JS, antes de pintar.
+    (function () {
+      var raiz = document.documentElement;
+      raiz.classList.add("js");
+      try {
+        var tema = localStorage.getItem("tema");
+        if (tema === "claro" || tema === "oscuro") raiz.dataset.tema = tema;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="estilos.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Valentino Costanzo",
+    "jobTitle": "Desarrollador y diseñador web",
+    "url": "https://valentino-costanzo.costanzovalentino09.workers.dev/",
+    "knowsAbout": ["Diseño web", "Desarrollo web", "E-commerce", "Sistemas a medida"]
+  }
+  </script>
+</head>
+<body>
+  <a class="saltar" href="#proyectos">Saltar a los proyectos</a>
+
+  <header class="cabecera">
+    <a class="marca" href="#inicio" aria-label="Valentino Costanzo, inicio">
+      <span class="marca__sigla" aria-hidden="true">VC</span>
+      <span class="marca__nombre">Valentino Costanzo</span>
+    </a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="tema" type="button" id="boton-tema" aria-label="Cambiar a modo claro">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- ============ INICIO ============ -->
+    <section class="inicio" id="inicio">
+      <p class="inicio__meta entra" style="--i:0">
+        <span>Desarrollador y diseñador web</span>
+        <span>Portfolio 2026</span>
+      </p>
+      <h1 class="inicio__nombre">
+        <span class="linea"><span class="entra-linea" style="--i:1">Valentino</span></span>
+        <span class="linea"><span class="entra-linea" style="--i:2"><em>Costanzo</em></span></span>
+      </h1>
+      <div class="inicio__pie">
+        <p class="inicio__frase entra" style="--i:4">Diseño y desarrollo webs y sistemas para marcas.</p>
+        <div class="inicio__botones entra" style="--i:5">
+          <a class="boton boton--lleno" href="#proyectos">Ver proyectos <span class="flecha" aria-hidden="true">↓</span></a>
+          <a class="boton" href="https://wa.me/5492915239152?text=Hola%20Valentino%2C%20vi%20tu%20portfolio%20y%20quiero%20hacerte%20una%20consulta." target="_blank" rel="noopener">Escribime por WhatsApp <span class="flecha" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROYECTOS DESTACADOS ============ -->
+    <section class="seccion" id="proyectos">
+      <header class="titulo revelar">
+        <p class="rotulo">Proyectos destacados</p>
+        <h2>Cuatro trabajos, <em>de punta a punta.</em></h2>
+      </header>
+
+      <article class="caso">
+        <header class="caso__cabecera revelar">
+          <span class="caso__numero">01</span>
+          <h3>REMLAB</h3>
+          <p class="caso__tipo">E-commerce · Impresión 3D</p>
+        </header>
+        <div class="caso__medios revelar">
+          <div class="navegador">
+            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>remlab3d.com</span></div>
+            <img src="img/remlab-desktop-1280.webp" srcset="img/remlab-desktop-720.webp 720w, img/remlab-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Inicio de la tienda REMLAB con una impresora 3D en pantalla" fetchpriority="low" decoding="async">
+          </div>
+          <div class="celu"><img src="img/remlab-mobile.webp" width="390" height="844" alt="La tienda REMLAB vista en el celular" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="caso__texto">
+          <dl class="caso__relato">
+            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Una pieza impresa en 3D no se entiende en una foto plana: hay que verla de todos lados.</dd></div>
+            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>Una tienda donde una impresora imprime el logo mientras bajás, y cada pieza se puede girar en 3D. Catálogo, carrito y pedidos a medida.</dd></div>
+            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Publicada, con 27 productos en el catálogo. Sigue en desarrollo: lo próximo es el pago online.</dd></div>
+          </dl>
+          <div class="caso__cierre revelar">
+            <ul class="stack" aria-label="Tecnologías"><li>Next.js</li><li>TypeScript</li><li>Tailwind</li><li>three.js</li></ul>
+            <a class="enlace" href="https://remlab3d.com/" target="_blank" rel="noopener">Ver remlab3d.com <span class="flecha" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="caso">
+        <header class="caso__cabecera revelar">
+          <span class="caso__numero">02</span>
+          <h3>Importado Bahía</h3>
+          <p class="caso__tipo">E-commerce + sistema a medida · Perfumería</p>
+        </header>
+        <div class="caso__medios revelar">
+          <div class="navegador">
+            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>importadobahia.com</span></div>
+            <img src="img/importado-desktop-1280.webp" srcset="img/importado-desktop-720.webp 720w, img/importado-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Vitrina de perfumes de Importado Bahía" loading="lazy" decoding="async">
+          </div>
+          <div class="celu"><img src="img/importado-mobile.webp" width="390" height="844" alt="La tienda de Importado Bahía vista en el celular" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="caso__texto">
+          <dl class="caso__relato">
+            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Un catálogo grande de perfumes, con frascos, decants y precios mayoristas, difícil de mostrar y de vender por chat.</dd></div>
+            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>La tienda con vitrina, filtros y carrito, el seguimiento de cada pedido por link y un panel para manejar pedidos, stock y clientes.</dd></div>
+            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Es la tienda real de la marca: toma los pedidos, el stock se descuenta solo y el dueño lo maneja desde el celular.</dd></div>
+          </dl>
+          <div class="caso__cierre revelar">
+            <ul class="stack" aria-label="Tecnologías"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Supabase</li><li>GSAP</li></ul>
+            <a class="enlace" href="https://importadobahia.com/" target="_blank" rel="noopener">Ver importadobahia.com <span class="flecha" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="caso">
+        <header class="caso__cabecera revelar">
+          <span class="caso__numero">03</span>
+          <h3>torino</h3>
+          <p class="caso__tipo">Sistema a medida · Ticketera propia</p>
+        </header>
+        <div class="caso__medios revelar">
+          <div class="navegador">
+            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>torinoprod.com</span></div>
+            <img src="img/torino-desktop-1280.webp" srcset="img/torino-desktop-720.webp 720w, img/torino-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Próximos eventos en la web de torino" loading="lazy" decoding="async">
+          </div>
+          <div class="celu"><img src="img/torino-mobile.webp" width="390" height="844" alt="La ticketera de torino vista en el celular" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="caso__texto">
+          <dl class="caso__relato">
+            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Vender entradas sin depender de una ticketera ajena ni de capturas de transferencia.</dd></div>
+            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>La ticketera completa: pago con Mercado Pago, entrada con QR al instante, panel con ventas en vivo y escáner para la puerta, que anda sin señal.</dd></div>
+            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Las fiestas de torino se venden desde su propia web, con entradas a nombre de cada persona.</dd></div>
+          </dl>
+          <div class="caso__cierre revelar">
+            <ul class="stack" aria-label="Tecnologías"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Supabase</li><li>Mercado Pago</li></ul>
+            <a class="enlace" href="https://torinoprod.com/" target="_blank" rel="noopener">Ver torinoprod.com <span class="flecha" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="caso">
+        <header class="caso__cabecera revelar">
+          <span class="caso__numero">04</span>
+          <h3>Contadores Asociados</h3>
+          <p class="caso__tipo">Web · Estudio contable en Paraguay</p>
+        </header>
+        <div class="caso__medios revelar">
+          <div class="navegador">
+            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>Contadores Asociados</span></div>
+            <img src="img/contadores-desktop-1280.webp" srcset="img/contadores-desktop-720.webp 720w, img/contadores-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Inicio de la web de Contadores Asociados" loading="lazy" decoding="async">
+          </div>
+          <div class="celu"><img src="img/contadores-mobile.webp" width="390" height="844" alt="La web de Contadores Asociados vista en el celular" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="caso__texto">
+          <dl class="caso__relato">
+            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Un estudio contable de Encarnación necesitaba una web para presentarse y recibir consultas.</dd></div>
+            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>Una landing con los colores de la marca, sobre la referencia que eligió el cliente: servicios, proceso, preguntas frecuentes, mapa y consulta por WhatsApp.</dd></div>
+            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Terminada y entregada, lista para publicarse en el dominio del estudio.</dd></div>
+          </dl>
+          <div class="caso__cierre revelar">
+            <ul class="stack" aria-label="Tecnologías"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ MÁS PROYECTOS ============ -->
+    <section class="seccion" id="mas-proyectos">
+      <header class="titulo revelar">
+        <p class="rotulo">Más proyectos</p>
+        <h2>Y otros cinco <em>que también hice yo.</em></h2>
+      </header>
+
+      <ul class="grilla">
+        <li class="revelar" style="--d:0">
+          <a class="tarjeta" href="https://cono-agency.costanzovalentino09.workers.dev/" target="_blank" rel="noopener">
+            <div class="tarjeta__medios">
+              <img class="tarjeta__captura" src="img/cono-desktop-720.webp" width="720" height="450" alt="Inicio de la web de Cono" loading="lazy" decoding="async">
+              <div class="celu celu--chico"><img src="img/cono-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="tarjeta__texto">
+              <h3>Cono <span class="flecha" aria-hidden="true">↗</span></h3>
+              <p class="tarjeta__tipo">Web + marca · Mi agencia</p>
+              <p>La web de mi agencia, con una calculadora de horas y demos para probar.</p>
+            </div>
+          </a>
+        </li>
+        <li class="revelar" style="--d:1">
+          <a class="tarjeta" href="https://missubb.costanzovalentino09.workers.dev/" target="_blank" rel="noopener">
+            <div class="tarjeta__medios">
+              <img class="tarjeta__captura" src="img/missu-desktop-720.webp" width="720" height="450" alt="Inicio de la web de missú tiramisú" loading="lazy" decoding="async">
+              <div class="celu celu--chico"><img src="img/missu-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="tarjeta__texto">
+              <h3>missú <span class="flecha" aria-hidden="true">↗</span></h3>
+              <p class="tarjeta__tipo">Web · Tiramisú artesanal</p>
+              <p>El tiramisú gira mientras bajás y el pedido llega armado por WhatsApp.</p>
+            </div>
+          </a>
+        </li>
+        <li class="revelar" style="--d:0">
+          <a class="tarjeta" href="https://chipaadicto.costanzovalentino09.workers.dev/" target="_blank" rel="noopener">
+            <div class="tarjeta__medios">
+              <img class="tarjeta__captura" src="img/chipa-desktop-720.webp" width="720" height="450" alt="Inicio de la web de chipaadicto" loading="lazy" decoding="async">
+              <div class="celu celu--chico"><img src="img/chipa-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="tarjeta__texto">
+              <h3>chipaadicto <span class="flecha" aria-hidden="true">↗</span></h3>
+              <p class="tarjeta__tipo">Web · Chipá casero</p>
+              <p>Se elige cuánto con + y −, se ve el total y el pedido sale por WhatsApp.</p>
+            </div>
+          </a>
+        </li>
+        <li class="revelar" style="--d:1">
+          <a class="tarjeta" href="https://guardiolacuts.costanzovalentino09.workers.dev/" target="_blank" rel="noopener">
+            <div class="tarjeta__medios">
+              <img class="tarjeta__captura" src="img/guardiola-desktop-720.webp" width="720" height="450" alt="Inicio de la web de Guardiola Cuts" loading="lazy" decoding="async">
+              <div class="celu celu--chico"><img src="img/guardiola-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="tarjeta__texto">
+              <h3>Guardiola Cuts <span class="flecha" aria-hidden="true">↗</span></h3>
+              <p class="tarjeta__tipo">Web · Barbería</p>
+              <p>Turno en cuatro toques desde el celular, directo al WhatsApp del barbero.</p>
+            </div>
+          </a>
+        </li>
+        <li class="revelar" style="--d:2">
+          <a class="tarjeta" href="https://cono-agency.costanzovalentino09.workers.dev/demos/consultorio/" target="_blank" rel="noopener">
+            <div class="tarjeta__medios">
+              <img class="tarjeta__captura" src="img/lumen-desktop-720.webp" width="720" height="450" alt="Inicio de la demo de Lumen Odontología" loading="lazy" decoding="async">
+              <div class="celu celu--chico"><img src="img/lumen-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
+            </div>
+            <div class="tarjeta__texto">
+              <h3>Lumen Odontología <span class="flecha" aria-hidden="true">↗</span></h3>
+              <p class="tarjeta__tipo">Sistema a medida · Demo</p>
+              <p>Turnos online y un panel con agenda, pacientes y cobros. Es una demo para probar.</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ MARCAS ============ -->
+    <section class="seccion" id="marcas">
+      <header class="titulo revelar">
+        <p class="rotulo">Marcas con las que trabajé</p>
+      </header>
+      <ul class="marcas revelar">
+        <li style="--fondo:#0f0f10"><img src="img/logo-remlab.webp" width="360" height="61" alt="REMLAB" loading="lazy"></li>
+        <li style="--fondo:#0b0907"><img class="logo-alto" src="img/logo-importado.webp" width="180" height="180" alt="Importado Bahía" loading="lazy"></li>
+        <li style="--fondo:#0a0606"><img src="img/logo-torino.webp" width="360" height="157" alt="torino" loading="lazy"></li>
+        <li style="--fondo:#ffffff"><img src="img/logo-contadores.webp" width="360" height="84" alt="Contadores Asociados" loading="lazy"></li>
+        <li style="--fondo:#f5f5f0"><img src="img/logo-cono.svg" width="541" height="170" alt="Cono" loading="lazy"></li>
+        <li style="--fondo:#fbf6ec"><img class="logo-alto" src="img/logo-missu.webp" width="263" height="180" alt="missú" loading="lazy"></li>
+        <li style="--fondo:#f29a1f"><img class="logo-alto" src="img/logo-chipa.webp" width="180" height="180" alt="chipaadicto" loading="lazy"></li>
+        <li style="--fondo:#1a2233"><img src="img/logo-guardiola.webp" width="360" height="127" alt="Guardiola Cuts" loading="lazy"></li>
+      </ul>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="seccion" id="servicios">
+      <header class="titulo revelar">
+        <p class="rotulo">Servicios</p>
+        <h2>Lo que puedo <em>hacer por tu marca.</em></h2>
+      </header>
+      <ol class="servicios">
+        <li class="revelar"><span class="servicios__numero">01</span><h3>Webs</h3><p>Diseñadas a medida, rápidas y con la identidad de tu marca.</p></li>
+        <li class="revelar"><span class="servicios__numero">02</span><h3>Tiendas online</h3><p>Catálogo, carrito y pedidos que te llegan ordenados.</p></li>
+        <li class="revelar"><span class="servicios__numero">03</span><h3>Sistemas a medida</h3><p>Turnos, ventas, stock y clientes en un panel hecho para vos.</p></li>
+      </ol>
+    </section>
+
+    <!-- ============ SOBRE MÍ ============ -->
+    <section class="seccion sobre" id="sobre-mi">
+      <header class="titulo revelar">
+        <p class="rotulo">Sobre mí</p>
+      </header>
+      <div class="sobre__texto revelar">
+        <p class="sobre__grande">Soy Valentino. Diseño y programo yo mismo cada proyecto, <em>de la primera idea al último detalle.</em></p>
+        <p>Fundé Cono, mi agencia, y armé torino, mi propia ticketera. Me gustan las webs rápidas, claras y que se parecen a la marca que las usa, no a una plantilla.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="seccion contacto" id="contacto">
+      <p class="rotulo revelar">Contacto</p>
+      <h2 class="contacto__titulo revelar">¿Armamos <em>lo tuyo?</em></h2>
+      <ul class="contacto__lista revelar">
+        <li>
+          <span>WhatsApp</span>
+          <a href="https://wa.me/5492915239152?text=Hola%20Valentino%2C%20vi%20tu%20portfolio%20y%20quiero%20hacerte%20una%20consulta." target="_blank" rel="noopener">291 523-9152 <span class="flecha" aria-hidden="true">↗</span></a>
+        </li>
+        <!-- Instagram y mail: falta que Valentino pase los datos. Copiar el <li> de arriba. -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>© 2026 Valentino Costanzo</p>
+    <a href="#inicio">Volver arriba <span class="flecha" aria-hidden="true">↑</span></a>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
