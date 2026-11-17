@@ -264,6 +264,8 @@ svg.fill { fill: currentColor; }
   margin: 20px 0 22px;
   text-wrap: balance;
 }
+.hero__intro { display: flex; align-items: flex-start; gap: 16px; }
+.hero__foto { flex: none; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin-top: 4px; box-shadow: 0 0 0 3px var(--naranja, #FF6A13); }
 .hero__lead { font-size: clamp(18px, 4.8vw, 21px); color: var(--gris-osc); max-width: 32ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .hero__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
@@ -877,7 +879,7 @@ svg.fill { fill: currentColor; }
   .hero__text { display: contents; }
   .hero__text .eyebrow { grid-area: eyebrow; }
   .hero__title { grid-area: title; font-size: clamp(4rem, 7.6vw, 7.2rem); max-width: none; margin-bottom: 40px; }
-  .hero__lead { grid-area: lead; }
+  .hero__intro { grid-area: lead; }
   .hero__actions { grid-area: actions; }
   .hero__pills { grid-area: pills; align-self: start; }
   .quick { grid-area: quick; max-width: 560px; }
