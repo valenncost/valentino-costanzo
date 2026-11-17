@@ -4,4 +4,6 @@ wrangler.jsonc
 .gitignore
 .wrangler
 README.md
+CLAUDE.md
 notas
+node_modules

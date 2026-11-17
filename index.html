@@ -1,341 +1,386 @@
 <!doctype html>
-<html lang="es-AR" data-tema="oscuro">
+<html lang="en" data-idioma="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Valentino Costanzo · Diseño y desarrollo web</title>
-  <meta name="description" content="Soy Valentino Costanzo. Diseño y desarrollo webs, tiendas online y sistemas a medida para marcas. Mirá mis proyectos y escribime por WhatsApp.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Valentino Costanzo | Web developer</title>
+  <meta name="description" content="I'm Valentino, a web developer from Argentina. I build websites, online stores, booking and ticketing systems, admin panels and 3D product viewers.">
   <link rel="canonical" href="https://valentino-costanzo.costanzovalentino09.workers.dev/">
-  <meta name="theme-color" content="#0d0e0c">
-  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#121212">
 
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_AR">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_AR">
   <meta property="og:site_name" content="Valentino Costanzo">
-  <meta property="og:title" content="Valentino Costanzo · Diseño y desarrollo web">
-  <meta property="og:description" content="Diseño y desarrollo webs, tiendas online y sistemas a medida para marcas.">
+  <meta property="og:title" content="Valentino Costanzo | Web developer">
+  <meta property="og:description" content="Websites, online stores, booking and ticketing systems, admin panels and 3D product viewers.">
   <meta property="og:url" content="https://valentino-costanzo.costanzovalentino09.workers.dev/">
   <meta property="og:image" content="https://valentino-costanzo.costanzovalentino09.workers.dev/img/compartir.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <link rel="preload" href="fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
   <script>
-    // Tema guardado (oscuro por defecto) y aviso de que hay JS, antes de pintar.
+    // Idioma antes de pintar: el guardado, o español si el navegador está en español; si no, inglés.
+    // Y la marca de que hay JavaScript para preparar las animaciones (a los 4 segundos se muestra todo igual).
     (function () {
-      var raiz = document.documentElement;
-      raiz.classList.add("js");
-      try {
-        var tema = localStorage.getItem("tema");
-        if (tema === "claro" || tema === "oscuro") raiz.dataset.tema = tema;
-      } catch (e) {}
+      var raiz = document.documentElement, idioma = null;
+      try { idioma = localStorage.getItem('idioma'); } catch (e) {}
+      if (idioma !== 'es' && idioma !== 'en') {
+        idioma = /^es\b/i.test(navigator.language || '') ? 'es' : 'en';
+      }
+      raiz.lang = idioma;
+      raiz.setAttribute('data-idioma', idioma);
+      raiz.classList.add('js');
+      setTimeout(function () { raiz.classList.add('js-ready'); }, 4000);
     })();
   </script>
-  <link rel="stylesheet" href="estilos.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Valentino Costanzo",
-    "jobTitle": "Desarrollador y diseñador web",
+    "jobTitle": "Web developer",
     "url": "https://valentino-costanzo.costanzovalentino09.workers.dev/",
-    "knowsAbout": ["Diseño web", "Desarrollo web", "E-commerce", "Sistemas a medida"]
+    "address": { "@type": "PostalAddress", "addressLocality": "Bahía Blanca", "addressCountry": "AR" },
+    "sameAs": ["https://www.fiverr.com/valenn08"],
+    "knowsAbout": ["Web development", "E-commerce", "Next.js", "React", "TypeScript", "Supabase", "Three.js"]
   }
   </script>
 </head>
 <body>
-  <a class="saltar" href="#proyectos">Saltar a los proyectos</a>
+  <a class="skip" href="#inicio" data-i18n="saltar">Skip to content</a>
 
-  <header class="cabecera">
-    <a class="marca" href="#inicio">
-      <span class="marca__sigla" aria-hidden="true">VC</span>
-      <span class="marca__nombre">Valentino Costanzo</span>
-    </a>
-    <nav class="menu" aria-label="Secciones">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-    <button class="tema" type="button" id="boton-tema" aria-label="Cambiar a modo claro">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
-    </button>
+  <!-- Barra de progreso -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="nav">
+    <div class="nav__pill">
+      <a href="#inicio" class="marca nav__logo" data-i18n-attr="aria-label:irInicio" aria-label="Valentino Costanzo, go to top">valentino costanzo<span class="marca__punto" aria-hidden="true">.</span></a>
+      <div class="nav__right">
+        <button class="idioma" type="button" data-i18n-attr="aria-label:cambiarIdioma" aria-label="Cambiar a español">
+          <span class="idioma__op" data-op="es">ES</span><span class="idioma__sep" aria-hidden="true">/</span><span class="idioma__op" data-op="en">EN</span>
+        </button>
+        <a class="nav__cta" data-link="fiverr" href="https://www.fiverr.com/valenn08" target="_blank" rel="noopener" data-i18n="contratame">Hire me on Fiverr</a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-i18n-attr="aria-label:abrirMenu" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
+  <!-- Menú a pantalla completa -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__inner" data-i18n-attr="aria-label:menuPrincipal" aria-label="Main menu">
+      <ul class="menu__list">
+        <li class="menu__item"><a href="#proyectos" class="menu__link"><span data-i18n="navProyectos">Projects</span></a></li>
+        <li class="menu__item"><a href="#servicios" class="menu__link"><span data-i18n="navServicios">What I do</span></a></li>
+        <li class="menu__item"><a href="#como-trabajo" class="menu__link"><span data-i18n="navProceso">How I work</span></a></li>
+        <li class="menu__item"><a href="#por-que-yo" class="menu__link"><span data-i18n="navPorQue">Why me</span></a></li>
+        <li class="menu__item"><a href="#contacto" class="menu__link"><span data-i18n="navContacto">Contact</span></a></li>
+      </ul>
+      <a data-link="fiverr" href="https://www.fiverr.com/valenn08" target="_blank" rel="noopener" class="btn btn--dark btn--block menu__cta">
+        <span data-i18n="contratame">Hire me on Fiverr</span>
+        <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Índice de secciones fijo a la derecha (solo compu) -->
+  <nav class="toc" data-i18n-attr="aria-label:secciones" aria-label="Sections">
+    <ul class="toc__list">
+      <li><a class="toc__link" href="#proyectos"><span class="toc__name" data-i18n="navProyectos">Projects</span><span class="toc__line" aria-hidden="true"></span><span class="toc__num">01</span></a></li>
+      <li><a class="toc__link" href="#servicios"><span class="toc__name" data-i18n="navServicios">What I do</span><span class="toc__line" aria-hidden="true"></span><span class="toc__num">02</span></a></li>
+      <li><a class="toc__link" href="#como-trabajo"><span class="toc__name" data-i18n="navProceso">How I work</span><span class="toc__line" aria-hidden="true"></span><span class="toc__num">03</span></a></li>
+      <li><a class="toc__link" href="#por-que-yo"><span class="toc__name" data-i18n="navPorQue">Why me</span><span class="toc__line" aria-hidden="true"></span><span class="toc__num">04</span></a></li>
+      <li><a class="toc__link" href="#contacto"><span class="toc__name" data-i18n="navContacto">Contact</span><span class="toc__line" aria-hidden="true"></span><span class="toc__num">05</span></a></li>
+      <li><a class="toc__link" href="#preguntas"><span class="toc__name" data-i18n="navPreguntas">FAQ</span><span class="toc__line" aria-hidden="true"></span><span class="toc__num">06</span></a></li>
+    </ul>
+  </nav>
+
   <main>
+
     <!-- ============ INICIO ============ -->
-    <section class="inicio" id="inicio">
-      <p class="inicio__meta entra" style="--i:0">
-        <span>Desarrollador y diseñador web</span>
-        <span>Portfolio 2026</span>
-      </p>
-      <h1 class="inicio__nombre">
-        <span class="linea"><span class="entra-linea" style="--i:1">Valentino</span></span>
-        <span class="linea"><span class="entra-linea" style="--i:2"><em>Costanzo</em></span></span>
-      </h1>
-      <div class="inicio__pie">
-        <p class="inicio__frase entra" style="--i:4">Diseño y desarrollo webs y sistemas para marcas.</p>
-        <div class="inicio__botones entra" style="--i:5">
-          <a class="boton boton--lleno" href="#proyectos">Ver proyectos <span class="flecha" aria-hidden="true">↓</span></a>
-          <a class="boton" href="https://wa.me/5492915239152?text=Hola%20Valentino%2C%20vi%20tu%20portfolio%20y%20quiero%20hacerte%20una%20consulta." target="_blank" rel="noopener">Escribime por WhatsApp <span class="flecha" aria-hidden="true">↗</span></a>
+    <section class="section section--light hero" id="inicio">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow" data-hero data-i18n="heroEyebrow">Web developer · Argentina</p>
+          <h1 class="hero__title" data-split data-hero-title data-i18n="heroTitulo">Websites and systems <em>for your business</em>.</h1>
+          <p class="hero__lead" data-hero data-i18n="heroLead">I'm Valentino. I build websites, online stores, booking and ticketing systems, admin panels and 3D product viewers.</p>
+
+          <div class="hero__actions" data-hero>
+            <a data-link="fiverr" href="https://www.fiverr.com/valenn08" target="_blank" rel="noopener" class="btn btn--orange">
+              <span data-i18n="contratame">Hire me on Fiverr</span>
+              <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
+
+          <!-- Accesos rápidos: proyectos y servicios -->
+          <div class="quick" data-hero>
+            <a href="#proyectos" class="quick__card">
+              <span class="quick__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M2.5 8h19M6 6h.01M8.5 6h.01"/></svg></span>
+              <span class="quick__txt"><b data-i18n="quickProyectosT">See projects</b><small data-i18n="quickProyectosS">Live sites you can try</small></span>
+              <span class="quick__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a href="#servicios" class="quick__card">
+              <span class="quick__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+              <span class="quick__txt"><b data-i18n="quickServiciosT">What I do</b><small data-i18n="quickServiciosS">Websites, stores and systems</small></span>
+              <span class="quick__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
+
+          <ul class="hero__pills" data-render="pastillas" data-hero></ul>
+        </div>
+
+        <!-- Tarjeta de la derecha: un trabajo en vivo + datos rápidos -->
+        <aside class="perfil" data-hero>
+          <a class="perfil__shot" href="https://remlab3d.com/producto/lampara-de-luna" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+            <span class="project__bar"><i></i><i></i><i></i><span class="project__url">remlab3d.com/producto</span></span>
+            <img src="proyectos/remlab-3d.webp" alt="" width="1200" height="750">
+          </a>
+          <p class="perfil__caption"><span class="tag__dot"></span><span data-i18n="perfilCaption">REMLAB · 3D product viewer</span></p>
+          <ul class="perfil__datos">
+            <li><span class="perfil__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span data-i18n="perfilLugar">Bahía Blanca, Argentina</span></li>
+            <li><span class="perfil__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span data-i18n="perfilHora">UTC−3, overlaps with US business hours</span></li>
+            <li><span class="perfil__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span data-i18n="perfilIdiomas">English and Spanish</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ CINTA DEL STACK ============ -->
+    <section class="section--light tools" aria-labelledby="tools-title">
+      <h2 class="tools__title" id="tools-title" data-i18n="stackTitulo">My stack</h2>
+      <div class="marquee">
+        <div class="marquee__track" data-render="herramientas"></div>
+      </div>
+    </section>
+
+    <!-- ============ 01. PROYECTOS ============ -->
+    <section class="section section--dark projects" id="proyectos">
+      <div class="container">
+        <p class="tag" data-reveal><span class="tag__dot"></span><span data-i18n="proyectosTag">01 · Projects</span></p>
+        <h2 class="h2" data-split data-i18n="proyectosTitulo">Recent <em>work</em>.</h2>
+        <p class="lead" data-reveal data-i18n="proyectosLead">Open one to see how it works inside.</p>
+        <div class="projects__feature" data-render="proyectos" data-reveal></div>
+      </div>
+    </section>
+
+    <!-- ============ 02. QUÉ HAGO ============ -->
+    <section class="section section--light servicios" id="servicios">
+      <div class="container">
+        <p class="tag" data-reveal><span class="tag__dot"></span><span data-i18n="serviciosTag">02 · What I do</span></p>
+        <h2 class="h2" data-split data-i18n="serviciosTitulo">What I can <em>build for you</em>.</h2>
+        <p class="lead" data-reveal data-i18n="serviciosLead">Every project is built from scratch for the business. These are the most common ones.</p>
+
+        <div class="services" data-render="servicios"></div>
+      </div>
+    </section>
+
+    <!-- ============ FRASE GRANDE ============ -->
+    <section class="section section--dark statement">
+      <div class="container">
+        <h2 class="statement__title" data-light data-i18n="fraseTitulo">Websites that <em>do the work</em>.</h2>
+        <p class="statement__text" data-light data-i18n="fraseTexto">Taking orders, booking appointments, selling tickets, tracking stock. I build the part your customers see and the panel you use to run it.</p>
+        <ul class="statement__chips" data-render="chips" data-reveal-group></ul>
+      </div>
+    </section>
+
+    <!-- ============ 03. CÓMO TRABAJO ============ -->
+    <section class="section section--light process" id="como-trabajo">
+      <div class="container">
+        <p class="tag" data-reveal><span class="tag__dot"></span><span data-i18n="procesoTag">03 · How I work</span></p>
+        <h2 class="h2" data-split data-i18n="procesoTitulo">From first message to <em>live site</em>.</h2>
+        <p class="lead" data-reveal data-i18n="procesoLead">Four simple steps.</p>
+
+        <ol class="steps">
+          <li class="steps__track" aria-hidden="true"><span class="steps__fill"></span></li>
+          <li class="step">
+            <span class="step__num">01</span>
+            <div class="step__body">
+              <p class="step__label"><span data-i18n="pasoLabel">Step</span> 01</p>
+              <h3 data-i18n="paso1T">You message me</h3>
+              <p data-i18n="paso1P">On Fiverr or by email. Tell me about your business and what you need.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">02</span>
+            <div class="step__body">
+              <p class="step__label"><span data-i18n="pasoLabel">Step</span> 02</p>
+              <h3 data-i18n="paso2T">I send a plan</h3>
+              <p data-i18n="paso2P">What I'll build, the price and the timeline, before any work starts.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">03</span>
+            <div class="step__body">
+              <p class="step__label"><span data-i18n="pasoLabel">Step</span> 03</p>
+              <h3 data-i18n="paso3T">I build it</h3>
+              <p data-i18n="paso3P">You get progress updates along the way and tell me what to change.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num">04</span>
+            <div class="step__body">
+              <p class="step__label"><span data-i18n="pasoLabel">Step</span> 04</p>
+              <h3 data-i18n="paso4T">Launch</h3>
+              <p data-i18n="paso4P">I publish it, show you how to use it and stay around for changes.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 04. POR QUÉ YO ============ -->
+    <section class="section section--dark why" id="por-que-yo">
+      <div class="container">
+        <p class="tag" data-reveal><span class="tag__dot"></span><span data-i18n="porQueTag">04 · Why me</span></p>
+        <h2 class="h2" data-split data-i18n="porQueTitulo">Why work <em>with me</em>.</h2>
+        <p class="lead" data-reveal data-i18n="porQueLead">A few honest reasons.</p>
+
+        <div class="why__grid" data-reveal-group>
+          <article class="why__card">
+            <span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></span>
+            <h3 data-i18n="porQue1T">You talk to me directly</h3>
+            <p data-i18n="porQue1P">No account managers. The person you talk to is the one who designs and builds it.</p>
+          </article>
+          <article class="why__card">
+            <span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M2.5 8h19M6 6h.01M8.5 6h.01"/></svg></span>
+            <h3 data-i18n="porQue2T">Work you can try</h3>
+            <p data-i18n="porQue2P">Most projects on this page are live sites. Open them and click around.</p>
+          </article>
+          <article class="why__card">
+            <span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h8M8 11h6"/></svg></span>
+            <h3 data-i18n="porQue3T">Plain English</h3>
+            <p data-i18n="porQue3P">Hosting, domains and databases explained in simple words. No jargon.</p>
+          </article>
+          <article class="why__card">
+            <span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></span>
+            <h3 data-i18n="porQue4T">Design and code</h3>
+            <p data-i18n="porQue4P">From the first sketch to the database, one person takes care of all of it.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ PROYECTOS DESTACADOS ============ -->
-    <section class="seccion" id="proyectos">
-      <header class="titulo revelar">
-        <p class="rotulo">Proyectos destacados</p>
-        <h2>Cuatro trabajos, <em>de punta a punta.</em></h2>
-      </header>
+    <!-- ============ 05. CONTACTO ============ -->
+    <section class="section section--light contact" id="contacto">
+      <div class="container contact__grid">
+        <div class="contact__intro">
+          <p class="tag" data-reveal><span class="tag__dot"></span><span data-i18n="contactoTag">05 · Contact</span></p>
+          <h2 class="h2" data-split data-i18n="contactoTitulo">Got a project? <em>Let's talk</em>.</h2>
+          <p class="lead" data-reveal data-i18n="contactoLead">The easiest way to hire me is through Fiverr: payments are protected and everything stays in one place. You can also email me with questions first.</p>
+        </div>
 
-      <article class="caso">
-        <header class="caso__cabecera revelar">
-          <span class="caso__numero">01</span>
-          <h3>REMLAB</h3>
-          <p class="caso__tipo">E-commerce · Impresión 3D</p>
-        </header>
-        <div class="caso__medios revelar">
-          <div class="navegador">
-            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>remlab3d.com</span></div>
-            <img src="img/remlab-desktop-1280.webp" srcset="img/remlab-desktop-720.webp 720w, img/remlab-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Inicio de la tienda REMLAB con una impresora 3D en pantalla" fetchpriority="low" decoding="async">
-          </div>
-          <div class="celu"><img src="img/remlab-mobile.webp" width="390" height="844" alt="La tienda REMLAB vista en el celular" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="caso__texto">
-          <dl class="caso__relato">
-            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Una pieza impresa en 3D no se entiende en una foto plana: hay que verla de todos lados.</dd></div>
-            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>Una tienda donde una impresora imprime el logo mientras bajás, y cada pieza se puede girar en 3D. Catálogo, carrito y pedidos a medida.</dd></div>
-            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Publicada, con 27 productos en el catálogo. Sigue en desarrollo: lo próximo es el pago online.</dd></div>
-          </dl>
-          <div class="caso__cierre revelar">
-            <ul class="stack" aria-label="Tecnologías"><li>Next.js</li><li>TypeScript</li><li>Tailwind</li><li>three.js</li></ul>
-            <a class="enlace" href="https://remlab3d.com/" target="_blank" rel="noopener">Ver remlab3d.com <span class="flecha" aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="caso">
-        <header class="caso__cabecera revelar">
-          <span class="caso__numero">02</span>
-          <h3>Importado Bahía</h3>
-          <p class="caso__tipo">E-commerce + sistema a medida · Perfumería</p>
-        </header>
-        <div class="caso__medios revelar">
-          <div class="navegador">
-            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>importadobahia.com</span></div>
-            <img src="img/importado-desktop-1280.webp" srcset="img/importado-desktop-720.webp 720w, img/importado-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Vitrina de perfumes de Importado Bahía" loading="lazy" decoding="async">
-          </div>
-          <div class="celu"><img src="img/importado-mobile.webp" width="390" height="844" alt="La tienda de Importado Bahía vista en el celular" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="caso__texto">
-          <dl class="caso__relato">
-            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Un catálogo grande de perfumes, con frascos, decants y precios mayoristas, difícil de mostrar y de vender por chat.</dd></div>
-            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>La tienda con vitrina, filtros y carrito, el seguimiento de cada pedido por link y un panel para manejar pedidos, stock y clientes.</dd></div>
-            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Es la tienda real de la marca: toma los pedidos, el stock se descuenta solo y el dueño lo maneja desde el celular.</dd></div>
-          </dl>
-          <div class="caso__cierre revelar">
-            <ul class="stack" aria-label="Tecnologías"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Supabase</li><li>GSAP</li></ul>
-            <a class="enlace" href="https://importadobahia.com/" target="_blank" rel="noopener">Ver importadobahia.com <span class="flecha" aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="caso">
-        <header class="caso__cabecera revelar">
-          <span class="caso__numero">03</span>
-          <h3>torino</h3>
-          <p class="caso__tipo">Sistema a medida · Ticketera propia</p>
-        </header>
-        <div class="caso__medios revelar">
-          <div class="navegador">
-            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>torinoprod.com</span></div>
-            <img src="img/torino-desktop-1280.webp" srcset="img/torino-desktop-720.webp 720w, img/torino-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Próximos eventos en la web de torino" loading="lazy" decoding="async">
-          </div>
-          <div class="celu"><img src="img/torino-mobile.webp" width="390" height="844" alt="La ticketera de torino vista en el celular" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="caso__texto">
-          <dl class="caso__relato">
-            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Vender entradas sin depender de una ticketera ajena ni de capturas de transferencia.</dd></div>
-            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>La ticketera completa: pago con Mercado Pago, entrada con QR al instante, panel con ventas en vivo y escáner para la puerta, que anda sin señal.</dd></div>
-            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Las fiestas de torino se venden desde su propia web, con entradas a nombre de cada persona.</dd></div>
-          </dl>
-          <div class="caso__cierre revelar">
-            <ul class="stack" aria-label="Tecnologías"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Supabase</li><li>Mercado Pago</li></ul>
-            <a class="enlace" href="https://torinoprod.com/" target="_blank" rel="noopener">Ver torinoprod.com <span class="flecha" aria-hidden="true">↗</span></a>
-          </div>
-        </div>
-      </article>
-
-      <article class="caso">
-        <header class="caso__cabecera revelar">
-          <span class="caso__numero">04</span>
-          <h3>Contadores Asociados</h3>
-          <p class="caso__tipo">Web · Estudio contable en Paraguay</p>
-        </header>
-        <div class="caso__medios revelar">
-          <div class="navegador">
-            <div class="navegador__barra" aria-hidden="true"><i></i><i></i><i></i><span>Contadores Asociados</span></div>
-            <img src="img/contadores-desktop-1280.webp" srcset="img/contadores-desktop-720.webp 720w, img/contadores-desktop-1280.webp 1280w" sizes="(min-width: 900px) 78vw, 92vw" width="1280" height="800" alt="Inicio de la web de Contadores Asociados" loading="lazy" decoding="async">
-          </div>
-          <div class="celu"><img src="img/contadores-mobile.webp" width="390" height="844" alt="La web de Contadores Asociados vista en el celular" loading="lazy" decoding="async"></div>
-        </div>
-        <div class="caso__texto">
-          <dl class="caso__relato">
-            <div class="revelar" style="--d:0"><dt>El problema</dt><dd>Un estudio contable de Encarnación necesitaba una web para presentarse y recibir consultas.</dd></div>
-            <div class="revelar" style="--d:1"><dt>Qué hice</dt><dd>Una landing con los colores de la marca, sobre la referencia que eligió el cliente: servicios, proceso, preguntas frecuentes, mapa y consulta por WhatsApp.</dd></div>
-            <div class="revelar" style="--d:2"><dt>Resultado</dt><dd>Terminada y entregada, lista para publicarse en el dominio del estudio.</dd></div>
-          </dl>
-          <div class="caso__cierre revelar">
-            <ul class="stack" aria-label="Tecnologías"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- ============ MÁS PROYECTOS ============ -->
-    <section class="seccion" id="mas-proyectos">
-      <header class="titulo revelar">
-        <p class="rotulo">Más proyectos</p>
-        <h2>Y otros cinco <em>que también hice yo.</em></h2>
-      </header>
-
-      <ul class="grilla">
-        <li class="revelar" style="--d:0">
-          <a class="tarjeta" href="https://conoagency.vercel.app/" target="_blank" rel="noopener">
-            <div class="tarjeta__medios">
-              <img class="tarjeta__captura" src="img/cono-desktop-720.webp" width="720" height="450" alt="Inicio de la web de Cono" loading="lazy" decoding="async">
-              <div class="celu celu--chico"><img src="img/cono-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
-            </div>
-            <div class="tarjeta__texto">
-              <h3>Cono <span class="flecha" aria-hidden="true">↗</span></h3>
-              <p class="tarjeta__tipo">Web + marca · Mi agencia</p>
-              <p>La web de mi agencia, con una calculadora de horas y demos para probar.</p>
-            </div>
+        <div class="canales" data-reveal>
+          <a class="canal canal--fiverr" data-link="fiverr" href="https://www.fiverr.com/valenn08" target="_blank" rel="noopener">
+            <span class="canal__txt"><b data-i18n="contactoFiverrT">Hire me on Fiverr</b><small data-i18n="contactoFiverrS">fiverr.com/valenn08</small></span>
+            <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </li>
-        <li class="revelar" style="--d:1">
-          <a class="tarjeta" href="https://missubb.vercel.app/" target="_blank" rel="noopener">
-            <div class="tarjeta__medios">
-              <img class="tarjeta__captura" src="img/missu-desktop-720.webp" width="720" height="450" alt="Inicio de la web de missú tiramisú" loading="lazy" decoding="async">
-              <div class="celu celu--chico"><img src="img/missu-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
-            </div>
-            <div class="tarjeta__texto">
-              <h3>missú <span class="flecha" aria-hidden="true">↗</span></h3>
-              <p class="tarjeta__tipo">Web · Tiramisú artesanal</p>
-              <p>El tiramisú gira mientras bajás y el pedido llega armado por WhatsApp.</p>
-            </div>
+          <a class="canal" data-link="email" href="mailto:costanzovalentino09@gmail.com">
+            <span class="canal__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span class="canal__txt"><b data-i18n="contactoEmailT">Send me an email</b><small data-link-texto="email">costanzovalentino09@gmail.com</small></span>
+            <span class="canal__flecha" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </li>
-        <li class="revelar" style="--d:0">
-          <a class="tarjeta" href="https://chipaadicto.vercel.app/" target="_blank" rel="noopener">
-            <div class="tarjeta__medios">
-              <img class="tarjeta__captura" src="img/chipa-desktop-720.webp" width="720" height="450" alt="Inicio de la web de chipaadicto" loading="lazy" decoding="async">
-              <div class="celu celu--chico"><img src="img/chipa-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
-            </div>
-            <div class="tarjeta__texto">
-              <h3>chipaadicto <span class="flecha" aria-hidden="true">↗</span></h3>
-              <p class="tarjeta__tipo">Web · Chipá casero</p>
-              <p>Se elige cuánto con + y −, se ve el total y el pedido sale por WhatsApp.</p>
-            </div>
+          <a class="canal" data-solo="es" data-link="whatsapp" href="https://wa.me/5492915239152" target="_blank" rel="noopener">
+            <span class="canal__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10.5c0 2.5 2 4.5 4.5 4.5l1.2-1.2-1.6-.9-.8.6a3 3 0 0 1-1.8-1.8l.6-.8-.9-1.6L9 10.5Z"/></svg></span>
+            <span class="canal__txt"><b data-i18n="contactoWaT">WhatsApp</b><small data-i18n="contactoWaS">291 523-9152</small></span>
+            <span class="canal__flecha" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
-        </li>
-        <li class="revelar" style="--d:1">
-          <a class="tarjeta" href="https://guardiolacuts.vercel.app/" target="_blank" rel="noopener">
-            <div class="tarjeta__medios">
-              <img class="tarjeta__captura" src="img/guardiola-desktop-720.webp" width="720" height="450" alt="Inicio de la web de Guardiola Cuts" loading="lazy" decoding="async">
-              <div class="celu celu--chico"><img src="img/guardiola-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
-            </div>
-            <div class="tarjeta__texto">
-              <h3>Guardiola Cuts <span class="flecha" aria-hidden="true">↗</span></h3>
-              <p class="tarjeta__tipo">Web · Barbería</p>
-              <p>Turno en cuatro toques desde el celular, directo al WhatsApp del barbero.</p>
-            </div>
-          </a>
-        </li>
-        <li class="revelar" style="--d:2">
-          <a class="tarjeta" href="https://lumenodontologia.vercel.app/" target="_blank" rel="noopener">
-            <div class="tarjeta__medios">
-              <img class="tarjeta__captura" src="img/lumen-desktop-720.webp" width="720" height="450" alt="Inicio de la demo de Lumen Odontología" loading="lazy" decoding="async">
-              <div class="celu celu--chico"><img src="img/lumen-mobile.webp" width="390" height="844" alt="" loading="lazy" decoding="async"></div>
-            </div>
-            <div class="tarjeta__texto">
-              <h3>Lumen Odontología <span class="flecha" aria-hidden="true">↗</span></h3>
-              <p class="tarjeta__tipo">Sistema a medida · Demo</p>
-              <p>Turnos online y un panel con agenda, pacientes y cobros. Es una demo para probar.</p>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </section>
-
-    <!-- ============ MARCAS ============ -->
-    <section class="seccion" id="marcas">
-      <header class="titulo revelar">
-        <p class="rotulo">Marcas con las que trabajé</p>
-      </header>
-      <ul class="marcas revelar">
-        <li style="--fondo:#0f0f10"><img src="img/logo-remlab.webp" width="360" height="61" alt="REMLAB" loading="lazy"></li>
-        <li style="--fondo:#0b0907"><img class="logo-alto" src="img/logo-importado.webp" width="180" height="180" alt="Importado Bahía" loading="lazy"></li>
-        <li style="--fondo:#0a0606"><img src="img/logo-torino.webp" width="360" height="157" alt="torino" loading="lazy"></li>
-        <li style="--fondo:#ffffff"><img src="img/logo-contadores.webp" width="360" height="84" alt="Contadores Asociados" loading="lazy"></li>
-        <li style="--fondo:#f5f5f0"><img src="img/logo-cono.svg" width="541" height="170" alt="Cono" loading="lazy"></li>
-        <li style="--fondo:#fbf6ec"><img class="logo-alto" src="img/logo-missu.webp" width="263" height="180" alt="missú" loading="lazy"></li>
-        <li style="--fondo:#f29a1f"><img class="logo-alto" src="img/logo-chipa.webp" width="180" height="180" alt="chipaadicto" loading="lazy"></li>
-        <li style="--fondo:#1a2233"><img src="img/logo-guardiola.webp" width="360" height="127" alt="Guardiola Cuts" loading="lazy"></li>
-      </ul>
-    </section>
-
-    <!-- ============ SERVICIOS ============ -->
-    <section class="seccion" id="servicios">
-      <header class="titulo revelar">
-        <p class="rotulo">Servicios</p>
-        <h2>Lo que puedo <em>hacer por tu marca.</em></h2>
-      </header>
-      <ol class="servicios">
-        <li class="revelar"><span class="servicios__numero">01</span><h3>Webs</h3><p>Diseñadas a medida, rápidas y con la identidad de tu marca.</p></li>
-        <li class="revelar"><span class="servicios__numero">02</span><h3>Tiendas online</h3><p>Catálogo, carrito y pedidos que te llegan ordenados.</p></li>
-        <li class="revelar"><span class="servicios__numero">03</span><h3>Sistemas a medida</h3><p>Turnos, ventas, stock y clientes en un panel hecho para vos.</p></li>
-      </ol>
-    </section>
-
-    <!-- ============ SOBRE MÍ ============ -->
-    <section class="seccion sobre" id="sobre-mi">
-      <header class="titulo revelar">
-        <p class="rotulo">Sobre mí</p>
-      </header>
-      <div class="sobre__texto revelar">
-        <p class="sobre__grande">Soy Valentino. Diseño y programo yo mismo cada proyecto, <em>de la primera idea al último detalle.</em></p>
-        <p>Fundé Cono, mi agencia, y armé torino, mi propia ticketera. Me gustan las webs rápidas, claras y que se parecen a la marca que las usa, no a una plantilla.</p>
+          <p class="canales__nota" data-i18n="contactoNota">I usually reply within a day.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ============ CONTACTO ============ -->
-    <section class="seccion contacto" id="contacto">
-      <p class="rotulo revelar">Contacto</p>
-      <h2 class="contacto__titulo revelar">¿Armamos <em>lo tuyo?</em></h2>
-      <ul class="contacto__lista revelar">
-        <li>
-          <span>WhatsApp</span>
-          <a href="https://wa.me/5492915239152?text=Hola%20Valentino%2C%20vi%20tu%20portfolio%20y%20quiero%20hacerte%20una%20consulta." target="_blank" rel="noopener">291 523-9152 <span class="flecha" aria-hidden="true">↗</span></a>
-        </li>
-        <!-- Instagram y mail: falta que Valentino pase los datos. Copiar el <li> de arriba. -->
-      </ul>
+    <!-- ============ 06. PREGUNTAS FRECUENTES ============ -->
+    <section class="section section--light faq" id="preguntas">
+      <div class="container faq__grid">
+        <div>
+          <p class="tag" data-reveal><span class="tag__dot"></span><span data-i18n="preguntasTag">06 · FAQ</span></p>
+          <h2 class="h2" data-split data-i18n="preguntasTitulo">Common <em>questions</em>.</h2>
+        </div>
+        <div class="accordion" data-render="preguntas" data-reveal-group></div>
+      </div>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="section section--dark closing" id="cierre">
+      <div class="container">
+        <h2 class="closing__title" data-split data-i18n="cierreTitulo">Let's build <em>your next site</em>.</h2>
+        <a class="btn btn--orange btn--lg" data-link="fiverr" href="https://www.fiverr.com/valenn08" target="_blank" rel="noopener" data-reveal>
+          <span data-i18n="contratame">Hire me on Fiverr</span>
+          <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer class="pie">
-    <p>© 2026 Valentino Costanzo</p>
-    <a href="#inicio">Volver arriba <span class="flecha" aria-hidden="true">↑</span></a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#inicio" class="marca marca--lg" data-i18n-attr="aria-label:irInicio" aria-label="Valentino Costanzo, go to top">valentino costanzo<span class="marca__punto" aria-hidden="true">.</span></a>
+          <p data-i18n="footerBajada">Web developer from Bahía Blanca, Argentina. Websites, online stores and custom systems.</p>
+        </div>
+        <nav class="footer__col" data-i18n-attr="aria-label:footerSecciones" aria-label="Sections">
+          <p class="footer__head" data-i18n="footerSecciones">Sections</p>
+          <ul>
+            <li><a href="#proyectos" data-i18n="navProyectos">Projects</a></li>
+            <li><a href="#servicios" data-i18n="navServicios">What I do</a></li>
+            <li><a href="#como-trabajo" data-i18n="navProceso">How I work</a></li>
+            <li><a href="#contacto" data-i18n="navContacto">Contact</a></li>
+            <li><a href="#preguntas" data-i18n="navPreguntas">FAQ</a></li>
+          </ul>
+        </nav>
+        <div class="footer__col">
+          <p class="footer__head" data-i18n="footerContacto">Contact</p>
+          <ul>
+            <li><a data-link="fiverr" href="https://www.fiverr.com/valenn08" target="_blank" rel="noopener" class="footer__social">
+              <span class="footer__social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              <span>Fiverr</span>
+            </a></li>
+            <li><a data-link="email" href="mailto:costanzovalentino09@gmail.com" class="footer__social">
+              <span class="footer__social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></span>
+              <span>Email</span>
+            </a></li>
+            <li data-solo="es"><a data-link="whatsapp" href="https://wa.me/5492915239152" target="_blank" rel="noopener" class="footer__social">
+              <span class="footer__social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+              <span>WhatsApp</span>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-anio>2026</span> Valentino Costanzo</p>
+        <p data-i18n="footerHecho">Built by hand, in Argentina.</p>
+      </div>
+    </div>
   </footer>
 
-  <script src="app.js" defer></script>
+  <!-- Botones flotantes -->
+  <div class="floating">
+    <button class="float-btn float-btn--top" type="button" data-i18n-attr="aria-label:volverArriba" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </button>
+    <a class="float-btn float-btn--contacto" href="#contacto" data-i18n-attr="aria-label:escribime" aria-label="Contact me">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+    </a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="config.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>

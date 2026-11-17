@@ -1,8 +1,10 @@
-# Caché del navegador (Cloudflare). Imágenes y letras: 1 semana. CSS y JS: siempre se revisa si hay versión nueva.
+# Caché del navegador (Cloudflare). Imágenes: 1 semana. CSS y JS: siempre se revisa si hay versión nueva.
 /img/*
   Cache-Control: public, max-age=604800
-/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
+/proyectos/*
+  Cache-Control: public, max-age=604800
+/logos-herramientas/*
+  Cache-Control: public, max-age=604800
 /*.png
   Cache-Control: public, max-age=604800
 /*.svg
